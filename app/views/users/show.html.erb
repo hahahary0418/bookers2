@@ -1,26 +1,18 @@
-<div>
-  <h3></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <p>name</p>
-  <p><%= @user.name %></p>
-  <p>introduction</p>
-  
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+<%= render 'books/list', books: @books %>
 
+
+<h3>Books</h3>
 
 <% @books.each do |book| %>
 <div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
+  <%= link_to user_path(@user) do %>
+    <%= image_tag book.user.get_profile_image(100,100) %>
   <% end %>
-  <%= image_tag book.user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-  <p>Title：<%= book.title %></p>
-  <p>Opinion：<%= book.body %></p>
+
+  <p>Title</p>
+  <%= link_to book.title, books_path %>
+  <p>Opinion</p>
+  <%= book.body %>
+
 </div>
 <% end %>

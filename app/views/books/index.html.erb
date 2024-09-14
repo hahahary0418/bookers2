@@ -1,11 +1,1 @@
-<% @books.each do |book| %>
-  <div>
-    <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-
-    <p>ユーザーネーム：<%= book.user.name %></p>
-    <p>Title：<%= book.title %></p>
-    <p>Opinion：<%= book.body %></p>
-  </div>
-<% end %>
+<%= render 'list',books: @books %>

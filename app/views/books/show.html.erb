@@ -1,11 +1,15 @@
+<%= render 'list',books: @books %>
+
 <div>
-  <%= image_tag @book.get_image %>
-  <p>投稿ユーザー画像：<%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <p>ショップ名：<%= @book.title %></p>
-  <p>説明：<%= @book.body %></p>
-  
+  <h3>Book detail</h3>
+  <%= link_to user_path(@user) do %>
+    <%= image_tag @user.get_profile_image(100,100) %>
+  <% end %>
+
+  <p><%= link_to @book.title, book_path(@book) %></p>
+  <p><%= @book.body %></p>
   <% if @book.user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book) %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>
 </div>
