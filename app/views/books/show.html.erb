@@ -4,6 +4,7 @@
   <h3>Book detail</h3>
   <%= link_to user_path(@user) do %>
     <%= image_tag @user.get_profile_image(100,100) %>
+    <%= @user.name %>
   <% end %>
 
   <p><%= link_to @book.title, book_path(@book) %></p>
