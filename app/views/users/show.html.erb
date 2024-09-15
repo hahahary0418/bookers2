@@ -10,9 +10,9 @@
   <% end %>
 
   <p>Title</p>
-  <%= link_to book.title, books_path %>
+  <%= link_to book.title, book_path(book) %>
   <p>Opinion</p>
-  <%= book.body %>
+  <%= @book.body %>
 
 </div>
 <% end %>
