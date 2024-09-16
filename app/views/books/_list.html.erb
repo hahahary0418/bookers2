@@ -1,3 +1,5 @@
+<%= flash[:notice] %>
+
 <div>
   <h3>User info</h3>
   <%= link_to user_path(@user) do %>
@@ -7,24 +9,13 @@
   <p><%= @user.name %></p>
   <p>introduction</p>
 
-  <% if @user == current_user %>
+  
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+  
 </div>
 
 <h1>New book</h1>
 
-
-<% if @book.errors.any? %>
-  <% @books.each do |book| %>
-    <%= book.errors.count %>件のエラーが発生しました
-    <ul>
-      <% book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-<% end %>
 
 <%= form_with model: Book.new, url: '/books', method: :post do |f| %>
   <h4>Title</h4>
