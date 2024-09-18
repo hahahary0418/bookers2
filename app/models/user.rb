@@ -10,8 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   
-
-  attribute :introduction, :text
+  validates:introduction, presence: false
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -21,8 +20,5 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def introduction
-    self[:introduction]
-  end
-
+  
 end
