@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def new
-    @book = Book.new
-    @user = current_user
+    
   end
 
   def create
