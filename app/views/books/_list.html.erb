@@ -30,7 +30,7 @@
       
       <div class="row">
         <% if current_user != @user %>
-          <td><%= render "relationships/btn", user: user, options: { class: ""} %></td>
+          <td><%= render "relationships/btn", user: @user, options: { class: ""} %></td>
         <% else %>
           <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
             <i class="fas fa-user-cog"></i>
@@ -38,11 +38,13 @@
         <% end %>
       </div>
       
-      <div class="row">
-        <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do  %>
-          <i class="fa-solid fa-user-gear"></i>
+      <div>
+        <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+          <td><%= link_to 'chatを始める', chat_path(@user.id), class: "ml-3" %></td>
         <% end %>
       </div>
+      
+      
       <h2 class="mt-3">New book</h2>
       
       <%= form_with model: Book.new, url: '/books', method: :post do |f| %>

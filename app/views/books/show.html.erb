@@ -31,7 +31,8 @@
                 </p>
               <% end %>
               </td>
-              <td><%= link_to @book.title, @book %></td>
+              <td>閲覧数：<%= @book.read_counts.count %></td>
+              
               <% if @book.user == current_user %>
                 <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
                 <td><%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
